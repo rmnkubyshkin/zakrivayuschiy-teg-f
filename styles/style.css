@@ -39,9 +39,9 @@
 
 .header__title {
   padding-block-start: clamp(120px,2.2em, 136px);
-  padding-block-end: 20px;
+  padding-block-end: 30px;
   color: var(--accent-color);
-  font-family: var(--press-start-2p-font);
+  font-family: var(--title-variable-font), VT323, sans-serif;
   font-weight: 400;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   line-height: 100%;
@@ -51,7 +51,7 @@
 .header__subtitle {
   padding-block-end: 22px;
   color: var(--accent-color);
-  font-family: var(--press-start-2p-font);
+  font-family: var(--title-variable-font), VT323, sans-serif;
   font-weight: 400;
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   line-height: 100%;
@@ -66,6 +66,7 @@
   border: none;
   padding: 0;
   outline: inherit;
+  color: transparent;
   background-color: transparent;
   cursor: pointer;
 }
@@ -76,6 +77,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
+  row-gap: 7px;
   padding-inline-end: 20px;
 }
 
@@ -84,7 +86,7 @@
   display: inline-block;
   padding-inline-start: 20px;
   color: var(--accent-color);
-  font-family: var(--press-start-2p-font);
+  font-family: var(--title-variable-font), VT323, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -99,19 +101,7 @@
   content:"▶";
   position: absolute;
   left: 0;
-  animation: arrow 500ms ease-in-out infinite;
-}
-
-@keyframes arrow {
-  0% {
-    padding-inline-start: 0px;
-  }
-  50% {
-    padding-inline-start: 4px;
-  }
-  100% {
-    padding-inline-start: 0px;
-  }
+  animation: arrow 1s ease-in-out infinite alternate;
 }
 
 .theme-menu__button:enabled:hover {
@@ -131,10 +121,13 @@
   transition: transform 0.3s ease;
   transform: scaleX(0);
   transform-origin: bottom left;
-
 }
 
-.theme-menu__button:enabled:hover::after {
+.theme-menu__button:enabled:focus-visible {
+  opacity: 60%;
+}
+
+.theme-menu__button:enabled:focus-visible::after {
   transform: scaleX(0.99);
   transform-origin: bottom left;
 }
@@ -153,6 +146,9 @@
 }
 
 .card__box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   border: 2px solid var(--accent-color);
   background-color: var(--bg-color);
 }
@@ -160,11 +156,11 @@
 .card__title {
   padding: 5px 24px 5px 10px;
   color: var(--accent-color);
-  font-family: var(--inter-variable-font);
+  font-family: var(--text-variable-font), Roboto, Helevetica, sans-serif;
   font-size: 18px;
   font-style: normal;
   line-height: 122%;
-  font-variation-settings: 'wght' var(--inter-title-font-weight);
+  font-variation-settings: 'wght' var(--title-bold-font-weight);
 }
 
 .card__image {
@@ -175,23 +171,23 @@
 }
 
 .card__text {
-  padding: 25px 26px 23px 26px;
+  padding: 25px 26px 0;
   color: var(--accent-color);
-  font-family: var(--inter-variable-font);
+  font-family: var(--text-variable-font), Roboto, Helevetica, sans-serif;
   font-size: 18px;
   font-style: normal;
   line-height: 117%;
-  font-variation-settings: 'wght' var(--inter-paragraph-font-weight);
+  font-variation-settings: 'wght' var(--title-regular-font-weight);
 }
 
 .card__tagline {
   padding-inline-start: 25px;
   color: var(--accent-color);
-  font-family: var(--inter-variable-font);
+  font-family: var(--text-variable-font), Roboto, Helevetica, sans-serif;
   font-size: 18px;
   font-style: normal;
   line-height: 117%;
-  font-variation-settings: 'wght' var(--inter-paragraph-font-weight);
+  font-variation-settings: 'wght' var(--title-regular-font-weight);
 }
 
 .card__button-list {
@@ -201,8 +197,8 @@
   justify-content: flex-end;
   column-gap: 7px;
   padding-inline-end: 25px;
-  padding-block-start: 27px;
-  padding-block-end: 21px;
+  padding-block-start: 25px;
+  padding-block-end: 25px;
 }
 
 .card__like-button {
@@ -211,19 +207,20 @@
   border: 2px solid var(--accent-color);
   overflow: hidden;
   color: var(--accent-color);
-  font-family: var(--press-start-2p-font);
+  font-family: var(--title-variable-font), VT323, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
   text-transform: capitalize;
   background-color: var(--bg-color);
-  transition: box-shadow 0.5s ease-in-out;
+  transition: box-shadow 0.3s ease;
   block-size: 38px;
   inline-size: 130px;
 }
 
 .card__like-button:focus-visible {
   box-shadow: 2px 2px var(--accent-color);
+
 }
 
 .card__like-button::after {
@@ -232,7 +229,8 @@
   right: -100%;
   bottom: -18px;
   left: 0;
-  background-color: var(--bg-color);
+  color: var(--button-text-color);
+  background-color: var(--button-text-color);
   transition: transform 0.5s ease-in-out;
   transform: scaleX(0);
   transform-origin: left;
@@ -242,49 +240,45 @@
 }
 
 .card__like-button:hover::after {
-  right:0;
-  background-color: var(--bg-color);
   transform: scaleX(1);
-  transform-origin: left;
-  mix-blend-mode: difference;
-}
-
-.button__text {
-  display: block;
-  block-size: 36px;
 }
 
 .card__icon-button {
+  margin-block-start: 1px;
   outline: 2px solid transparent;
   transition: outline-color 0.3s ease;
+  block-size: 36px;
 }
 
 .card__icon-button:focus-visible {
   outline: 2px solid var(--accent-color);
 }
 
-.card__image_im-clean-leaf {
+.filter-saturate-decrease {
   filter: saturate(0.3);
 }
 
-.card__image_if-i-cant {
+.filter-saturate-increase {
   filter: saturate(300%);
 }
+/*.floppy path{*/
+/*  fill:var(--accent-color);*/
+/*}*/
 
-.card_image_race-to-ideal {
+.filter-hue-rotate {
   filter: hue-rotate(30deg);
 
 }
 
-.card__image_about-who-near {
+.filter-invert {
   filter: invert(0.8);
 }
 
-.card__image_bypass-strategies {
+.filter-sepia {
   filter: sepia(0.8);
 }
 
-.card__image_when-hands-down {
+.filter-blur {
   filter: blur(20px);
 }
 
@@ -293,29 +287,24 @@
   overflow: hidden;
 }
 
-.card__image-now-iam-here {
+.filter-complex-set {
   filter: hue-rotate(100deg) contrast(40%) saturate(150%) brightness(120%) blur(2px);
 }
 
-.footer {
+.save-to-memory {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  padding-block-end: 103px;
 }
 
 .button-save {
   display: grid;
   grid-template-columns: 1fr 12fr;
-  margin-block-start: 48px;
   border: 2px solid var(--accent-color);
-  color: var(--accent-color);
-  font-family: var(--press-start-2p-font);
-  font-weight: 400;
-  font-size: 14px;
   line-height: 100%;
-  background-color: var(--bg-color);
   inline-size: clamp(306px, 100%, 335px);
   block-size: 55px;
 }
@@ -327,7 +316,6 @@
   bottom: 0;
   left: 0;
   grid-template-columns: 1fr 12fr;
-  background-color: var(--bg-color);
   transition: transform 0.5s ease-in-out;
   transform: scaleX(0);
   transform-origin: left;
@@ -336,9 +324,37 @@
   inline-size: clamp(306px, 100%, 335px);
 }
 
+.button-ok {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: 15px;
+  border: 2px solid var(--accent-color);
+  line-height: 100%;
+  text-transform: uppercase;
+  inline-size: 293px;
+  block-size: 38px;
+}
+
+.button-ok:after {
+  content: '';
+  position: absolute;
+  right: -100%;
+  bottom: 0;
+  left: 0;
+  grid-template-columns: 1fr 12fr;
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+  mix-blend-mode: difference;
+  block-size: 38px;
+  inline-size: 293px;
+}
+
 .button__text-like {
   padding-top: 12px;
 }
+
 .button__text-save {
   display: block;
   padding-inline-start: 4px;
@@ -351,8 +367,10 @@
   transform: scale(0.5);
 }
 
+.floppy-popup {
+  color: var(--accent-color);
+}
 .floppy-wrapper {
-
   padding-inline-start: 19px;
   padding-block: 15px;
 }
@@ -365,7 +383,7 @@
   padding-block-start: 25px;
   opacity: 50%;
   color: var(--accent-color);
-  font-family: var(--press-start-2p-font);
+  font-family: var(--title-variable-font), VT323, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -389,14 +407,14 @@
 .core {
   opacity: 0%;
   fill: var(--accent-color);
-  transition: 0.3s opacity linear;
+  transition: 0.3s opacity linear 0.03s;
 }
 
 .like-icon:hover .core {
   content: '';
   opacity: 100%;
   fill: var(--accent-color);
-  transition: 0.3s opacity linear 0.03s;
+  transition: 0.3s opacity linear;
 }
 
 .main-body {
@@ -422,67 +440,62 @@
 .like-icon:active .main-body {
   content: '';
   fill: var(--heart-body);
-  transition: 0.3s fill linear 0.03s;
+  transition: 0.3s fill linear 0.05s;
 }
 
 .contour {
   opacity: 100%;
   fill: var(--accent-color);
-  transition: 0.3s opacity linear;
+  transition: 0.3s opacity linear 0.06s;
 }
 
-.like-icon:active .contour {
+.like-icon.is-liked .contour {
   content: '';
   opacity: 100%;
   fill: var(--heart-body);
   transition: 0.3s fill linear 0.06s;
 }
 
-.like-icon:active .heart {
+.like-icon.is-liked .heart {
   transform-origin: center;
-  animation: scale-heart 0.5s ease-in 0.16s;
+  animation: scale-heart 0.3s ease-in 0.1s alternate;
   animation-fill-mode: backwards;
 }
 
 .like-icon.is-liked .main-body {
   opacity: 100%;
- fill: var(--heart-body);
+  fill: var(--heart-body);
+  transition: 0.3s fill linear 0.05s;
 }
 
 .like-icon.is-liked .core {
   opacity: 100%;
   fill: var(--heart-body);
+  transition: 0.3s fill linear;
 }
 
 .like-icon.is-liked .contour {
   opacity: 100%;
   fill: var(--heart-body);
-  transition: 0.1s fill linear;
+  transition: 0.3s fill linear 0.06s;
 }
 
 .floppy-popup {
   transform: scale(1.0);
 }
 
-@keyframes scale-heart {
-  from {
-    transform: scale(1.0);
-  }
-  to {
-    transform: scale(1.5);
-  }
-}
-
 .sparks {
   opacity: 0;
   fill: var(--heart-body);
   transition: 0.3s opacity ease-in 0.5s;
+  animation-direction: alternate;
 }
 
-.like-icon:active .sparks {
-  content: '';
-  opacity: 100%;
+.like-icon.is-liked .sparks {
   fill: var(--heart-body);
+  transform-origin: center;
+  animation: show-sparks 0.3s ease-in 0.3s alternate;
+  animation-fill-mode: backwards;
 }
 
 dialog {
@@ -490,6 +503,7 @@ dialog {
 }
 
 dialog:not([open]) {
+  display: none;
   opacity: 0;
   pointer-events: none;
 }
@@ -499,53 +513,59 @@ dialog {
   top: 245px;
   right: 15px;
   inset: 0;
+  justify-self: center;
+  align-self: center;
+  margin: 0;
 }
 .popup__top-section {
   display: grid;
   grid-template-columns: 1fr 3.3fr;
-  max-block-size: 107px;
+  grid-template-rows: min-content;
+  overflow-wrap: normal;
+  min-block-size: 107px;
+  max-inline-size: inherit;
 }
+
 .popup[open] {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  margin-block-start: 34px;
+  grid-template-rows: fit-content(100px);
+  margin-block-start: 32px;
   border: 2px solid var(--accent-color);
+  overflow: visible;
   color: var(--accent-color);
-  font-family: var(--press-start-2p-font);
+  font-family: var(--title-variable-font), VT323, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
   background-color: var(--bg-color);
   inline-size: 354px;
-  block-size: 191px;
 }
 
 .button__text-popup {
+  padding-inline-start: 5px;
   padding-inline-end: 15px;
   padding-block-start: 14px;
   line-height: 150%;
   text-transform: uppercase;
+  word-break: break-word;
+  max-inline-size: 234px;
 }
 
 .floppy-wrapper-popup {
   padding-inline-start: 17px;
   padding-block-start: 24px;
 }
+
 .button-save-popup {
+  align-self: end;
   margin-inline: 15px;
   margin-block-end: 15px;
-  border: 2px solid var(--accent-color);
-  color: var(--accent-color);
-  font-family: var(--press-start-2p-font);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 100%;
-  background-color: var(--bg-color);
+  text-transform: uppercase;
+  block-size: 38px;
 }
 
 dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.3);
-  backdrop-filter: blur(7px);
+  background-color: rgb(0 0 0 / 0.75);
 }
 
 .card__save-button {
@@ -554,13 +574,13 @@ dialog::backdrop {
   border: 2px solid var(--accent-color);
   overflow: hidden;
   color: var(--accent-color);
-  font-family: var(--press-start-2p-font);
+  font-family: var(--title-variable-font), VT323, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
-  text-transform: capitalize;
   background-color: var(--bg-color);
-  transition: box-shadow 0.5s ease-in-out;
+  transition: box-shadow 0.3s ease;
+  transform-origin: left;
 }
 
 .card__save-button:focus-visible {
@@ -570,28 +590,44 @@ dialog::backdrop {
 .card__save-button::after {
   content: '';
   position: absolute;
-  background-color: var(--bg-color);
+  color: var(--button-text-color);
+  background-color: var(--button-text-color);
   transition: transform 0.5s ease-in-out;
   transform: scaleX(0);
-  mix-blend-mode: difference;
 }
 
 .card__save-button:hover::after {
-  right:0;
-  background-color: var(--bg-color);    /*background-color: var(--accent-color);*/
+  content: '';
+  color: var(--button-text-color);
+  background-color: var(--button-text-color);
   transform: scaleX(1);
-  transform-origin: left;
-  mix-blend-mode: difference;
+}
+
+img.header__title {
+  content: var(--img-header);
 }
 
 @media (width < 376px) {
+
   .button-save {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr;
     justify-content: center;
-    margin-block-start: 46px;
     block-size: 84px;
-    inline-size: 306px;
+  }
+
+  .button-save:after {
+    content: '';
+    position: absolute;
+    right: -100%;
+    bottom: 0;
+    left: 0;
+    grid-template-columns: 1fr 12fr;
+    transition: transform 0.5s ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+    mix-blend-mode: difference;
+    block-size: 84px;
   }
 
   .floppy {

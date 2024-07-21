@@ -1,17 +1,19 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 :root {
-    --inter-variable-font: 'Inter-Variable';
-    --press-start-2p-font: 'PressStart2P-Regular';
-    --inter-title-font-weight: 700;
-    --inter-paragraph-font-weight: 400;
+    --text-variable-font: 'Inter-Variable';
+    --title-variable-font: 'PressStart2P';
+    --title-bold-font-weight: 700;
+    --title-regular-font-weight: 400;
     --bg-color: rgb(255, 255, 255);
     --accent-color: rgb(000,000,000);
     --bg-image-from: rgb(231, 231, 231);
     --bg-image-to: rgb(026, 026, 026);
     --bg-image:
-            repeating-linear-gradient(90deg, rgb(211, 211, 211) 2px, transparent 4px),
-            repeating-linear-gradient(rgb(211, 211, 211) 2px, transparent 4px),
-            repeating-linear-gradient(var(--bg-image-from), var(--bg-image-to));
+            repeating-linear-gradient(to left, rgb(211, 211, 211) 0 2px, rgb(211, 211, 211, 000) 2px 4px),
+            repeating-linear-gradient(to bottom, rgb(211, 211, 211) 0 2px, rgb(211, 211, 211, 000) 2px 4px),
+            repeating-linear-gradient(to bottom, var(--bg-image-from), var(--bg-image-to));
     --heart-counter: rgb(000, 000, 000);
     --heart-body: rgb(255, 000, 000);
+    --button-text-color: rgb(255, 255, 255);
+    --img-header: url(../images/html_theme-light.png);
 }

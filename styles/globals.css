@@ -14,16 +14,16 @@ body {
   max-inline-size: 1440px;
 }
 .page {
-  color: var(--accent-color);
-  font-family: var(--inter-variable-font), Roboto, Helevetica, sans-serif;
+  /*color: var(--accent-color);*/
+  font-family: var(--text-variable-font), Roboto, Helevetica, sans-serif;
   font-size: 18px;
   line-height: 117%;
-  background-color: var(--bg-color);
+  /*background-color: var(--bg-color);*/
   background-image: var(--bg-image);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  font-variation-settings: 'wght' var(--inter-paragraph-font-weight);
+  font-variation-settings: 'wght' var(--title-regular-font-weight);
 }
 
 h1,
