@@ -20,7 +20,7 @@
     --button-text-color: rgb(000, 204, 020);
     --img-header: url(../images/html_theme-dark.png);
 
-    @media (width < 376px) {
+    @media (width < 1439px) {
         --img-header: url(../images/html_theme-dark-small.png);
     }
 }
@@ -41,7 +41,7 @@
     --button-text-color: rgb(255, 255, 255);
     --img-header: url(../images/html_theme-light.png);
 
-    @media (width < 376px) {
+    @media (width < 1439px) {
         --img-header: url(../images/html_theme-light-small.png);
     }
 }
@@ -63,7 +63,7 @@
         --button-text-color: rgb(000, 204, 020);
         --img-header: url(../images/html_theme-dark.png);
 
-        @media (width < 376px) {
+        @media (width < 1439px) {
             --img-header: url(../images/html_theme-dark-small.png);
         }
     }
