@@ -446,13 +446,6 @@
   transition: 0.3s opacity linear 0.06s;
 }
 
-.like-icon.is-liked .contour {
-  content: '';
-  opacity: 100%;
-  fill: var(--heart-body);
-  transition: 0.3s fill linear 0.06s;
-}
-
 .like-icon.is-liked .heart {
   transform-origin: center;
   animation: scale-heart 0.3s ease-in 0.1s alternate;
