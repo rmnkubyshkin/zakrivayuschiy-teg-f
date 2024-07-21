@@ -351,6 +351,13 @@
   inline-size: 293px;
 }
 
+.button-ok:hover::after {
+  content: '';
+  color: var(--button-text-color);
+  background-color: var(--button-text-color);
+  transform: scaleX(1);
+}
+
 .button__text-like {
   padding-top: 12px;
 }
