@@ -18,11 +18,6 @@
     --heart-counter: rgb(000, 204, 020);
     --heart-body: rgb(255, 000, 000);
     --button-text-color: rgb(000, 204, 020);
-    --img-header: url(../images/html_theme-dark.png);
-
-    @media (width < 1439px) {
-        --img-header: url(../images/html_theme-dark-small.png);
-    }
 }
 
 :root.theme-light {
@@ -39,11 +34,6 @@
     --heart-counter: rgb(000, 000, 000);
     --heart-body: rgb(255, 000, 000);
     --button-text-color: rgb(255, 255, 255);
-    --img-header: url(../images/html_theme-light.png);
-
-    @media (width < 1439px) {
-        --img-header: url(../images/html_theme-light-small.png);
-    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -61,10 +51,5 @@
         --heart-counter: rgb(000, 204, 020);
         --heart-body: rgb(255, 000, 000);
         --button-text-color: rgb(000, 204, 020);
-        --img-header: url(../images/html_theme-dark.png);
-
-        @media (width < 1439px) {
-            --img-header: url(../images/html_theme-dark-small.png);
-        }
     }
 }
