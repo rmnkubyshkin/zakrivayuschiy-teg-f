@@ -200,12 +200,15 @@
 
 .button-style {
   position: relative;
+  inset: 0;
   z-index: 0;
   border: 2px solid var(--accent-color);
   overflow: hidden;
   text-transform: capitalize;
   background-color: var(--bg-color);
   transition: box-shadow 0.3s ease;
+  block-size: 0;
+  inline-size: 0;
 }
 
 .card__like-button {
@@ -222,56 +225,42 @@
   color: var(--button-text-color);
   background-color: var(--button-text-color);
   transform: scaleX(1);
+  block-size: 100%;
+  inline-size: 100%;
 }
 
 .card__save-button {
   display: grid;
   grid-template-columns: 1fr 12fr;
+  text-transform: none;
   inline-size: clamp(306px, 100%, 335px);
   block-size: 55px;
 }
 
 .card__ok-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-inline: 15px;
-    margin-block-end: 16px;
-    text-transform: uppercase;
-    inline-size: 293px;
-    block-size: 38px;
-}
-
-.card__ok-button::after {
-  content: '';
+  display: flex;
   grid-template-columns: 1fr 12fr;
+  justify-content: center;
+  align-items: center;
+  margin-inline: 15px;
+  margin-block-end: 16px;
+  text-transform: uppercase;
   block-size: 38px;
   inline-size: 293px;
 }
 
-.card__save-button::after {
-  content: '';
-  block-size: 55px;
-  inline-size: clamp(306px, 100%, 335px);
-}
-
-.card__like-button::after {
-  content: '';
-  bottom: -18px;
-  block-size: 55px;
-  inline-size: 130px;
-}
-
 .button-style::after {
+  content: '';
   position: absolute;
-  right: -100%;
-  left: 0;
+  inset: 0;
   color: var(--button-text-color);
   background-color: var(--button-text-color);
   transition: transform 0.5s ease-in-out;
   transform: scaleX(0);
   transform-origin: left;
   mix-blend-mode: difference;
+  block-size: 100%;
+  inline-size: 100%;
 }
 
 .card__icon-button {
@@ -327,7 +316,6 @@
   align-items: center;
   padding-block-end: 103px;
 }
-
 
 .button__text-like {
   padding-top: 12px;
@@ -461,7 +449,8 @@ dialog:not([open]) {
 .popup__top-section {
   display: grid;
   grid-template-columns: 1fr 3.3fr;
-  grid-template-rows: fit-content(107px);
+  grid-template-rows: 0.5fr;
+  row-gap: 30px;
   align-self: center;
   overflow-wrap: normal;
 }
@@ -469,6 +458,7 @@ dialog:not([open]) {
 .popup[open] {
   display: grid;
   grid-template-rows: fit-content(100px);
+  row-gap: 30px;
   border: 2px solid var(--accent-color);
   overflow: visible;
   background-color: var(--bg-color);
